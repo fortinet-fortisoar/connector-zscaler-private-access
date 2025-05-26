@@ -1,0 +1,1726 @@
+{
+  "name": "zscaler-private-access",
+  "label": "Zscaler Private Access (ZPA)",
+  "version": "1.0.0",
+  "description": "Zscaler Private Access (ZPA) is a cloud-delivered Zero Trust Network Access (ZTNA) solution that provides secure, identity-based access to internal applications without placing users on the network. It enables seamless integration with FortiSOAR for automated access control, threat response, and policy enforcement based on real-time user and application context. This connector enables automated operations such as Get All Configured Applications Segments, Get Specific Application Segment Details, Get Customer Certificates, Get All Issued Certificates, and Get Certificate Details.",
+  "publisher": "Fortinet",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "category": "Network Security",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "configuration": {
+    "fields": [
+      {
+        "name": "server_url",
+        "title": "Server URL",
+        "type": "text",
+        "description": "Specify the host or server URL for Zscaler Private Access (ZPA) to access the Rest API endpoint.",
+        "tooltip": "Specify the host or server URL for Zscaler Private Access (ZPA) to access the Rest API endpoint.",
+        "required": true,
+        "value": "https://api.zsapi.net",
+        "editable": true,
+        "visible": true
+      },
+      {
+        "name": "client_id",
+        "title": "Client ID",
+        "description": "Specify the Client ID used for authenticating with the Zscaler Private Access (ZPA) API endpoint.",
+        "tooltip": "Specify the Client ID used for authenticating with the Zscaler Private Access (ZPA) API endpoint.",
+        "required": true,
+        "type": "text",
+        "editable": true,
+        "visible": true
+      },
+      {
+        "name": "client_secret",
+        "title": "Client Secret ",
+        "description": "Specify the Client Secret used for authenticating with the Zscaler Private Access (ZPA) API endpoint.",
+        "tooltip": "Specify the Client Secret used for authenticating with the Zscaler Private Access (ZPA) API endpoint.",
+        "required": true,
+        "type": "password",
+        "editable": true,
+        "visible": true
+      },
+      {
+        "name": "token_url",
+        "title": "ZIdentity's Auth Token Endpoint",
+        "description": "Specify the ZIdentity auth token endpoint. This endpoint generates the Bearer token.",
+        "tooltip": "Specify the ZIdentity auth token endpoint. This endpoint generates the Bearer token.",
+        "required": true,
+        "type": "text",
+        "editable": true,
+        "visible": true
+      },
+      {
+        "name": "verify_ssl",
+        "title": "Verify SSL",
+        "description": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is selected, i.e., set to true.",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is selected, i.e., set to true.",
+        "required": false,
+        "type": "checkbox",
+        "value": "true",
+        "editable": true,
+        "visible": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_all_configured_applications_segments",
+      "title": "Get All Configured Applications Segments",
+      "annotation": "get_all_configured_applications_segments",
+      "category": "investigation",
+      "http_method": "GET",
+      "description": "Gets all configured application segments for the specified customer.",
+      "enabled": true,
+      "visible": true,
+      "parameters": [
+        {
+          "title": "Customer ID",
+          "type": "text",
+          "name": "customerId",
+          "description": "Specify the unique identifier of the ZPA tenant.",
+          "tooltip": "Specify the unique identifier of the ZPA tenant.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Filter String",
+          "type": "text",
+          "name": "search",
+          "description": "Specify the search term for filtering applications.",
+          "tooltip": "Specify the search term for filtering applications.",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "name": "page",
+          "title": "Offset",
+          "description": "Specifies the number of records to skip before starting to return results. Used for paginating API responses in combination with the Limit.",
+          "tooltip": "Specifies the number of records to skip before starting to return results. Used for paginating API responses in combination with the Limit.",
+          "type": "integer",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "name": "pagesize",
+          "title": "Limit",
+          "description": "Specifies the page size, i.e., the maximum number of records to return for this action. If not provided, the default page size is 20. The maximum page size is 500.",
+          "tooltip": "Specifies the page size, i.e., the maximum number of records to return for this action. If not provided, the default page size is 20. The maximum page size is 500.",
+          "type": "integer",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "name": "microtenantId",
+          "title": "Micro Tenant ID",
+          "description": "Specify the unique identifier of the Micro tenant for the ZPA tenant. If you are within a Micro tenant, you must pass the micro tenantId field when making an API call to retrieve data from that Micro tenant.",
+          "tooltip": "Specify the unique identifier of the Micro tenant for the ZPA tenant. If you are within a Micro tenant, you must pass the micro tenantId field when making an API call to retrieve data from that Micro tenant.",
+          "type": "text",
+          "required": false,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "output_schema": {
+        "totalPages": "",
+        "currentCount": "",
+        "totalCount": "",
+        "list": [
+          {
+            "id": "",
+            "name": "",
+            "enabled": "",
+            "description": "",
+            "certificateId": "",
+            "certificateName": "",
+            "applicationPort": "",
+            "applicationProtocol": "",
+            "domain": "",
+            "appId": "",
+            "microtenantId": "",
+            "microtenantName": "",
+            "inconsistentConfigDetails": {
+              "application": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "sraApplication": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "segmentGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "serverGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "appConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "baCertificate": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "postureProfile": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "trustedNetwork": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "branchConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "cloudConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "samlAttributes": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "scimAttributes": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "machineGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "idp": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "location": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "workloadTagGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "userPortal": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_specific_application_segment_details",
+      "title": "Get Specific Application Segment Details",
+      "annotation": "get_specific_application_segment_details",
+      "category": "investigation",
+      "http_method": "GET",
+      "description": "Retrieves the configuration details of the Application Segment associated with the given Application ID.",
+      "enabled": true,
+      "visible": true,
+      "parameters": [
+        {
+          "title": "Customer ID",
+          "name": "customerId",
+          "description": "Specify the unique identifier of the ZPA tenant.",
+          "tooltip": "Specify the unique identifier of the ZPA tenant.",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Application ID",
+          "name": "applicationId",
+          "description": "Specify the unique identifier of the Application Segment.",
+          "tooltip": "Specify the unique identifier of the Application Segment.",
+          "type": "text",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "name": "micro_tenant_id",
+          "title": "Micro Tenant ID",
+          "description": "Specify the unique identifier of the Micro tenant for the ZPA tenant. If you are within a Micro tenant, you must pass the micro tenantId field when making an API call to retrieve data from that Micro tenant.",
+          "tooltip": "Specify the unique identifier of the Micro tenant for the ZPA tenant. If you are within a Micro tenant, you must pass the micro tenantId field when making an API call to retrieve data from that Micro tenant.",
+          "type": "text",
+          "required": false,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "output_schema": {
+        "modifiedTime": "",
+        "creationTime": "",
+        "modifiedBy": "",
+        "id": "",
+        "microtenantId": "",
+        "microtenantName": "",
+        "domainNames": [
+        ],
+        "name": "",
+        "description": "",
+        "IdleTimeout": "",
+        "MaxAge": "",
+        "serverGroups": [
+          {
+            "id": "",
+            "modifiedTime": "",
+            "creationTime": "",
+            "modifiedBy": "",
+            "name": "",
+            "microtenantId": "",
+            "microtenantName": "",
+            "enabled": "",
+            "dynamicDiscovery": "",
+            "description": "",
+            "configSpace": "",
+            "weight": "",
+            "passive": "",
+            "extranetEnabled": "",
+            "zpnErId": {
+              "id": "",
+              "modifiedTime": "",
+              "creationTime": "",
+              "modifiedBy": "",
+              "ziaErId": "",
+              "ziaErName": "",
+              "ziaCloud": "",
+              "ziaOrgId": "",
+              "ziaModifiedTime": ""
+            }
+          }
+        ],
+        "enabled": "",
+        "passiveHealthEnabled": "",
+        "tcpPortRanges": [
+        ],
+        "udpPortRanges": [
+        ],
+        "tcpPortRange": [
+          {
+            "from": "",
+            "to": ""
+          }
+        ],
+        "udpPortRange": [
+          {
+            "from": "",
+            "to": ""
+          }
+        ],
+        "doubleEncrypt": "",
+        "segmentGroupId": "",
+        "segmentGroupName": "",
+        "configSpace": "",
+        "bypassType": "",
+        "healthCheckType": "",
+        "icmpAccessType": "",
+        "isCnameEnabled": "",
+        "clientlessApps": [
+          {
+            "id": "",
+            "name": "",
+            "enabled": "",
+            "description": "",
+            "certificateId": "",
+            "certificateName": "",
+            "applicationPort": "",
+            "applicationProtocol": "",
+            "domain": "",
+            "appId": "",
+            "microtenantId": "",
+            "microtenantName": "",
+            "inconsistentConfigDetails": {
+              "application": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "sraApplication": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "segmentGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "serverGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "appConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "baCertificate": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "postureProfile": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "trustedNetwork": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "branchConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "cloudConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "samlAttributes": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "scimAttributes": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "machineGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "idp": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "location": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "workloadTagGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "userPortal": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ]
+            },
+            "path": "",
+            "hidden": "",
+            "portal": "",
+            "trustUntrustedCert": "",
+            "allowOptions": "",
+            "localDomain": "",
+            "cname": "",
+            "appResource": {
+              "modifiedTime": "",
+              "creationTime": "",
+              "modifiedBy": "",
+              "id": "",
+              "microtenantId": "",
+              "microtenantName": "",
+              "domainNames": [
+              ],
+              "name": "",
+              "description": "",
+              "IdleTimeout": "",
+              "MaxAge": "",
+              "serverGroups": [
+                {
+                  "id": "",
+                  "modifiedTime": "",
+                  "creationTime": "",
+                  "modifiedBy": "",
+                  "name": "",
+                  "microtenantId": "",
+                  "microtenantName": "",
+                  "enabled": "",
+                  "dynamicDiscovery": "",
+                  "description": "",
+                  "configSpace": "",
+                  "weight": "",
+                  "passive": "",
+                  "extranetEnabled": "",
+                  "zpnErId": {
+                    "id": "",
+                    "modifiedTime": "",
+                    "creationTime": "",
+                    "modifiedBy": "",
+                    "ziaErId": "",
+                    "ziaErName": "",
+                    "ziaCloud": "",
+                    "ziaOrgId": "",
+                    "ziaModifiedTime": ""
+                  }
+                }
+              ],
+              "enabled": "",
+              "passiveHealthEnabled": "",
+              "tcpPortRanges": [
+              ],
+              "udpPortRanges": [
+              ],
+              "tcpPortRange": [
+                {
+                  "from": "",
+                  "to": ""
+                }
+              ],
+              "udpPortRange": [
+                {
+                  "from": "",
+                  "to": ""
+                }
+              ],
+              "doubleEncrypt": "",
+              "segmentGroupId": "",
+              "segmentGroupName": "",
+              "configSpace": "",
+              "bypassType": "",
+              "healthCheckType": "",
+              "icmpAccessType": "",
+              "isCnameEnabled": "",
+              "ipAnchored": "",
+              "healthReporting": "",
+              "tcpKeepAlive": "",
+              "appRecommendationId": "",
+              "selectConnectorCloseToApp": "",
+              "sharedMicrotenantDetails": {
+                "sharedToMicrotenants": [
+                  {
+                    "id": "",
+                    "name": ""
+                  }
+                ],
+                "sharedFromMicrotenant": {
+                  "id": "",
+                  "name": ""
+                }
+              },
+              "inconsistentConfigDetails": {
+                "application": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "sraApplication": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "segmentGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "serverGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "appConnectorGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "baCertificate": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "postureProfile": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "trustedNetwork": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "branchConnectorGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "cloudConnectorGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "samlAttributes": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "scimAttributes": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "machineGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "idp": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "location": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "workloadTagGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "userPortal": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ]
+              },
+              "fqdnDnsCheck": ""
+            },
+            "extDomain": "",
+            "extLabel": "",
+            "extDomainName": ""
+          }
+        ],
+        "inspectionApps": [
+          {
+            "id": "",
+            "name": "",
+            "enabled": "",
+            "description": "",
+            "certificateId": "",
+            "certificateName": "",
+            "applicationPort": "",
+            "applicationProtocol": "",
+            "domain": "",
+            "appId": "",
+            "microtenantId": "",
+            "microtenantName": "",
+            "inconsistentConfigDetails": {
+              "application": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "sraApplication": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "segmentGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "serverGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "appConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "baCertificate": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "postureProfile": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "trustedNetwork": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "branchConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "cloudConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "samlAttributes": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "scimAttributes": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "machineGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "idp": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "location": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "workloadTagGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "userPortal": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ]
+            },
+            "trustUntrustedCert": "",
+            "appResource": {
+              "modifiedTime": "",
+              "creationTime": "",
+              "modifiedBy": "",
+              "id": "",
+              "microtenantId": "",
+              "microtenantName": "",
+              "domainNames": [
+              ],
+              "name": "",
+              "description": "",
+              "IdleTimeout": "",
+              "MaxAge": "",
+              "serverGroups": [
+                {
+                  "id": "",
+                  "modifiedTime": "",
+                  "creationTime": "",
+                  "modifiedBy": "",
+                  "name": "",
+                  "microtenantId": "",
+                  "microtenantName": "",
+                  "enabled": "",
+                  "dynamicDiscovery": "",
+                  "description": "",
+                  "configSpace": "",
+                  "weight": "",
+                  "passive": "",
+                  "extranetEnabled": "",
+                  "zpnErId": {
+                    "id": "",
+                    "modifiedTime": "",
+                    "creationTime": "",
+                    "modifiedBy": "",
+                    "ziaErId": "",
+                    "ziaErName": "",
+                    "ziaCloud": "",
+                    "ziaOrgId": "",
+                    "ziaModifiedTime": ""
+                  }
+                }
+              ],
+              "enabled": "",
+              "passiveHealthEnabled": "",
+              "tcpPortRanges": [
+              ],
+              "udpPortRanges": [
+              ],
+              "tcpPortRange": [
+                {
+                  "from": "",
+                  "to": ""
+                }
+              ],
+              "udpPortRange": [
+                {
+                  "from": "",
+                  "to": ""
+                }
+              ],
+              "doubleEncrypt": "",
+              "segmentGroupId": "",
+              "segmentGroupName": "",
+              "configSpace": "",
+              "bypassType": "",
+              "healthCheckType": "",
+              "icmpAccessType": "",
+              "isCnameEnabled": "",
+              "ipAnchored": "",
+              "healthReporting": "",
+              "tcpKeepAlive": "",
+              "appRecommendationId": "",
+              "selectConnectorCloseToApp": "",
+              "sharedMicrotenantDetails": {
+                "sharedToMicrotenants": [
+                  {
+                    "id": "",
+                    "name": ""
+                  }
+                ],
+                "sharedFromMicrotenant": {
+                  "id": "",
+                  "name": ""
+                }
+              },
+              "inconsistentConfigDetails": {
+                "application": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "sraApplication": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "segmentGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "serverGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "appConnectorGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "baCertificate": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "postureProfile": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "trustedNetwork": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "branchConnectorGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "cloudConnectorGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "samlAttributes": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "scimAttributes": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "machineGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "idp": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "location": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "workloadTagGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "userPortal": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ]
+              },
+              "fqdnDnsCheck": ""
+            },
+            "protocols": [
+            ]
+          }
+        ],
+        "praApps": [
+          {
+            "id": "",
+            "name": "",
+            "enabled": "",
+            "description": "",
+            "certificateId": "",
+            "certificateName": "",
+            "applicationPort": "",
+            "applicationProtocol": "",
+            "domain": "",
+            "appId": "",
+            "microtenantId": "",
+            "microtenantName": "",
+            "inconsistentConfigDetails": {
+              "application": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "sraApplication": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "segmentGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "serverGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "appConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "baCertificate": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "postureProfile": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "trustedNetwork": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "branchConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "cloudConnectorGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "samlAttributes": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "scimAttributes": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "machineGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "idp": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "location": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "workloadTagGroup": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ],
+              "userPortal": [
+                {
+                  "name": "",
+                  "reason": ""
+                }
+              ]
+            },
+            "hidden": "",
+            "connectionSecurity": "",
+            "appResource": {
+              "modifiedTime": "",
+              "creationTime": "",
+              "modifiedBy": "",
+              "id": "",
+              "microtenantId": "",
+              "microtenantName": "",
+              "domainNames": [
+              ],
+              "name": "",
+              "description": "",
+              "IdleTimeout": "",
+              "MaxAge": "",
+              "serverGroups": [
+                {
+                  "id": "",
+                  "modifiedTime": "",
+                  "creationTime": "",
+                  "modifiedBy": "",
+                  "name": "",
+                  "microtenantId": "",
+                  "microtenantName": "",
+                  "enabled": "",
+                  "dynamicDiscovery": "",
+                  "description": "",
+                  "configSpace": "",
+                  "weight": "",
+                  "passive": "",
+                  "extranetEnabled": "",
+                  "zpnErId": {
+                    "id": "",
+                    "modifiedTime": "",
+                    "creationTime": "",
+                    "modifiedBy": "",
+                    "ziaErId": "",
+                    "ziaErName": "",
+                    "ziaCloud": "",
+                    "ziaOrgId": "",
+                    "ziaModifiedTime": ""
+                  }
+                }
+              ],
+              "enabled": "",
+              "passiveHealthEnabled": "",
+              "tcpPortRanges": [
+              ],
+              "udpPortRanges": [
+              ],
+              "tcpPortRange": [
+                {
+                  "from": "",
+                  "to": ""
+                }
+              ],
+              "udpPortRange": [
+                {
+                  "from": "",
+                  "to": ""
+                }
+              ],
+              "doubleEncrypt": "",
+              "segmentGroupId": "",
+              "segmentGroupName": "",
+              "configSpace": "",
+              "bypassType": "",
+              "healthCheckType": "",
+              "icmpAccessType": "",
+              "isCnameEnabled": "",
+              "ipAnchored": "",
+              "healthReporting": "",
+              "tcpKeepAlive": "",
+              "appRecommendationId": "",
+              "selectConnectorCloseToApp": "",
+              "sharedMicrotenantDetails": {
+                "sharedToMicrotenants": [
+                  {
+                    "id": "",
+                    "name": ""
+                  }
+                ],
+                "sharedFromMicrotenant": {
+                  "id": "",
+                  "name": ""
+                }
+              },
+              "inconsistentConfigDetails": {
+                "application": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "sraApplication": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "segmentGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "serverGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "appConnectorGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "baCertificate": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "postureProfile": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "trustedNetwork": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "branchConnectorGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "cloudConnectorGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "samlAttributes": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "scimAttributes": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "machineGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "idp": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "location": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "workloadTagGroup": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ],
+                "userPortal": [
+                  {
+                    "name": "",
+                    "reason": ""
+                  }
+                ]
+              },
+              "fqdnDnsCheck": ""
+            }
+          }
+        ],
+        "commonAppsDto": {
+          "appsConfig": [
+            {
+              "name": "",
+              "baAppId": "",
+              "inspectAppId": "",
+              "praAppId": "",
+              "enabled": "",
+              "description": "",
+              "certificateId": "",
+              "certificateName": "",
+              "applicationPort": "",
+              "applicationProtocol": "",
+              "connectionSecurity": "",
+              "domain": "",
+              "path": "",
+              "hidden": "",
+              "portal": "",
+              "appId": "",
+              "trustUntrustedCert": "",
+              "allowOptions": "",
+              "cname": "",
+              "localDomain": "",
+              "appTypes": [
+                "BROWSER_ACCESS"
+              ],
+              "protocols": [
+              ],
+              "adpEnabled": "",
+              "extDomain": "",
+              "extLabel": ""
+            }
+          ],
+          "deletedBaApps": [
+          ],
+          "deletedInspectApps": [
+          ],
+          "deletedPraApps": [
+          ]
+        },
+        "ipAnchored": "",
+        "bypassOnReauth": "",
+        "inspectTrafficWithZia": "",
+        "healthReporting": "",
+        "useInDrMode": "",
+        "tcpKeepAlive": "",
+        "appRecommendationId": "",
+        "selectConnectorCloseToApp": "",
+        "sharedMicrotenantDetails": {
+          "sharedToMicrotenants": [
+            {
+              "id": "",
+              "name": ""
+            }
+          ],
+          "sharedFromMicrotenant": {
+            "id": "",
+            "name": ""
+          }
+        },
+        "inconsistentConfigDetails": {
+          "application": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "sraApplication": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "segmentGroup": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "serverGroup": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "appConnectorGroup": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "baCertificate": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "postureProfile": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "trustedNetwork": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "branchConnectorGroup": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "cloudConnectorGroup": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "samlAttributes": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "scimAttributes": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "machineGroup": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "idp": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "location": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "workloadTagGroup": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ],
+          "userPortal": [
+            {
+              "name": "",
+              "reason": ""
+            }
+          ]
+        },
+        "matchStyle": "",
+        "tcpProtocols": [
+        ],
+        "udpProtocols": [
+        ],
+        "isIncompleteDRConfig": "",
+        "adpEnabled": "",
+        "autoAppProtectEnabled": "",
+        "apiProtectionEnabled": "",
+        "fqdnDnsCheck": "",
+        "weightedLoadBalancing": "",
+        "extranetEnabled": "",
+        "zpnErId": {
+          "id": "",
+          "modifiedTime": "",
+          "creationTime": "",
+          "modifiedBy": "",
+          "ziaErId": "",
+          "ziaErName": "",
+          "ziaCloud": "",
+          "ziaOrgId": "",
+          "ziaModifiedTime": ""
+        }
+      }
+    },
+    {
+      "operation": "get_customer_certificates",
+      "title": "Get Customer Certificates",
+      "annotation": "get_customer_certificates",
+      "category": "investigation",
+      "http_method": "GET",
+      "description": "Retrieves a list of all available customer certificates based on the provided Customer ID.",
+      "enabled": true,
+      "visible": true,
+      "parameters": [
+        {
+          "title": "Customer ID",
+          "type": "text",
+          "name": "customerId",
+          "description": "Specify the unique ZPA Tenant ID of the customer.",
+          "tooltip": "Specify the unique ZPA Tenant ID of the customer.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "output_schema": {
+        "totalPages": "",
+        "list": [
+          {
+            "id": "",
+            "modifiedTime": "",
+            "creationTime": "",
+            "modifiedBy": "",
+            "name": "",
+            "description": "",
+            "cName": "",
+            "validFromInEpochSec": "",
+            "validToInEpochSec": "",
+            "certificate": "",
+            "issuedTo": "",
+            "issuedBy": "",
+            "serialNo": "",
+            "publicKey": ""
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_all_issued_certificates",
+      "title": "Get All Issued Certificates",
+      "annotation": "get_all_issued_certificates",
+      "category": "investigation",
+      "http_method": "GET",
+      "description": "Retrieve all issued certificates.",
+      "enabled": true,
+      "visible": true,
+      "parameters": [
+        {
+          "title": "Customer ID",
+          "type": "text",
+          "name": "customerId",
+          "description": "Specify the unique ZPA Tenant ID of the customer.",
+          "tooltip": "Specify the unique ZPA Tenant ID of the customer.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Filter String",
+          "type": "text",
+          "name": "search",
+          "description": "Specify the search string for filtering the certificates. ex name LIKE client",
+          "tooltip": "Specify the search string for filtering the certificates. ex name LIKE client",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "name": "page",
+          "title": "Offset",
+          "description": "Specifies the number of records to skip before starting to return results. Used for paginating API responses in combination with the Limit.",
+          "tooltip": "Specifies the number of records to skip before starting to return results. Used for paginating API responses in combination with the Limit.",
+          "type": "integer",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "name": "pagesize",
+          "title": "Limit",
+          "description": "Specifies the page size, i.e., the maximum number of records to return for this action. If not provided, the default page size is 20. The maximum page size is 500.",
+          "tooltip": "Specifies the page size, i.e., the maximum number of records to return for this action. If not provided, the default page size is 20. The maximum page size is 500.",
+          "type": "integer",
+          "required": false,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "output_schema": {
+        "totalPages": "",
+        "list": [
+          {
+            "id": "",
+            "modifiedTime": "",
+            "creationTime": "",
+            "modifiedBy": "",
+            "name": "",
+            "description": "",
+            "cName": "",
+            "validFromInEpochSec": "",
+            "validToInEpochSec": "",
+            "certificate": "",
+            "issuedTo": "",
+            "issuedBy": "",
+            "serialNo": "",
+            "publicKey": ""
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_certificate_details",
+      "title": "Get Certificate Details",
+      "annotation": "get_certificate_details",
+      "category": "investigation",
+      "http_method": "GET",
+      "description": "Retrieves details of a specific certificate based on its ID.",
+      "enabled": true,
+      "visible": true,
+      "parameters": [
+        {
+          "title": "Customer ID",
+          "type": "text",
+          "name": "customerId",
+          "description": "Specify the unique ZPA Tenant ID of the customer for whom the specific certificate is being returned.",
+          "tooltip": "Specify the unique ZPA Tenant ID of the customer for whom the specific certificate is being returned.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Certificate ID",
+          "type": "text",
+          "name": "certificateId",
+          "description": "Specify the ID of the certificate for which you want to retrieve details.",
+          "tooltip": "Specify the ID of the certificate for which you want to retrieve details.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "output_schema": {
+        "id": "",
+        "modifiedTime": "",
+        "creationTime": "",
+        "modifiedBy": "",
+        "name": "",
+        "description": "",
+        "cName": "",
+        "validFromInEpochSec": "",
+        "validToInEpochSec": "",
+        "certificate": "",
+        "issuedTo": "",
+        "issuedBy": "",
+        "serialNo": "",
+        "publicKey": ""
+      }
+    },
+    {
+      "operation": "execute_api_request",
+      "title": "Execute an API Request",
+      "annotation": "execute_api_request",
+      "category": "utilities",
+      "endpoint": "",
+      "http_method": "POST",
+      "description": "Execute any Zscaler Private Access (ZPA) API endpoint using the specified API method, endpoint, and payload as input parameters.",
+      "enabled": true,
+      "visible": true,
+      "parameters": [
+        {
+          "name": "endpoint",
+          "title": "Endpoint",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify the REST API endpoint for the action to perform. Note: Do not include the host URL in the endpoint. ex /zpa/mgmtconfig/v1/admin/customers/{customerId}/policySet/policyType/{policyType} or /zpa/mgmtconfig/v1/admin/customers/{customerId}/application/{applicationId}.",
+          "description": "Specify the REST API endpoint for the action to perform. Note: Do not include the host URL in the endpoint. ex /zpa/mgmtconfig/v1/admin/customers/{customerId}/policySet/policyType/{policyType} or /zpa/mgmtconfig/v1/admin/customers/{customerId}/application/{applicationId}."
+        },
+        {
+          "name": "method",
+          "title": "Method",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "value": "GET",
+          "description": "The HTTP Method to use",
+          "options": [
+            "DELETE",
+            "GET",
+            "PATCH",
+            "POST",
+            "PUT"
+          ]
+        },
+        {
+          "title": "Query Parameters",
+          "name": "query_params",
+          "type": "json",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "description": "Specify the he Rest API query parameters object in JSON format."
+        },
+        {
+          "title": "Request Body/Payload",
+          "name": "payload",
+          "type": "json",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "description": "The payload needed for the call. Use empty brackets if there is no payload."
+        }
+      ],
+      "output_schema": {}
+    }
+  ]
+}

@@ -1,0 +1,489 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "3fe3b8dd-8fd8-4b7b-b993-4c1b487d56ea",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Zscaler Private Access (ZPA) - 1.0.0",
+      "description": "Zscaler Private Access (ZPA) is a cloud-delivered Zero Trust Network Access (ZTNA) solution that provides secure, identity-based access to internal applications without placing users on the network. It enables seamless integration with FortiSOAR for automated access control, threat response, and policy enforcement based on real-time user and application context. This connector enables automated operations such as Get All Configured Applications Segments, Get Specific Application Segment Details, Get Customer Certificates, Get All Issued Certificates, and Get Certificate Details.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Zscaler",
+        "zscaler-private-access"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "69e4b972-e831-45b3-8f82-3d9e50a34ffe",
+          "collection": "/api/3/workflow_collections/3fe3b8dd-8fd8-4b7b-b993-4c1b487d56ea",
+          "triggerLimit": null,
+          "description": "Gets all configured application segments for the specified customer.",
+          "name": "Get All Configured Applications Segments",
+          "tag": "#Zscaler Private Access (ZPA)",
+          "recordTags": [
+            "Zscaler",
+            "zscaler-private-access"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/fb9489b1-a047-4a8e-80c6-5941a9f310bc",
+          "steps": [
+            {
+              "uuid": "fb9489b1-a047-4a8e-80c6-5941a9f310bc",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "fcc87f41-7a6d-4908-b5d1-89dac3e7270a",
+                "title": "Zscaler Private Access (ZPA): Get All Configured Applications Segments",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "f963a016-644e-4279-a33a-21a1b99feaad",
+              "@type": "WorkflowStep",
+              "name": "Get All Configured Applications Segments",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Zscaler Private Access (ZPA)",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "zscaler-private-access",
+                "operation": "get_all_configured_applications_segments",
+                "operationTitle": "Get All Configured Applications Segments",
+                "step_variables": {}
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "948ce693-d509-4e5c-9f3c-01b8a9bc6fd0",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get All Configured Applications Segments",
+              "sourceStep": "/api/3/workflow_steps/fb9489b1-a047-4a8e-80c6-5941a9f310bc",
+              "targetStep": "/api/3/workflow_steps/f963a016-644e-4279-a33a-21a1b99feaad"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "33c687be-de14-4d55-94eb-87acaa51f00a",
+          "collection": "/api/3/workflow_collections/3fe3b8dd-8fd8-4b7b-b993-4c1b487d56ea",
+          "triggerLimit": null,
+          "description": "Retrieves the configuration details of the Application Segment associated with the given Application ID.",
+          "name": "Get Specific Application Segment Details",
+          "tag": "#Zscaler Private Access (ZPA)",
+          "recordTags": [
+            "Zscaler",
+            "zscaler-private-access"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/69ee54fa-ee71-4ec6-8ea1-d00c7927d3d9",
+          "steps": [
+            {
+              "uuid": "69ee54fa-ee71-4ec6-8ea1-d00c7927d3d9",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "f73c5441-d346-4e0d-be4d-ca3d18e1dce1",
+                "title": "Zscaler Private Access (ZPA): Get Specific Application Segment Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "7c5598af-2a35-44e7-9e0e-fa52d43faeb1",
+              "@type": "WorkflowStep",
+              "name": "Get Specific Application Segment Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Zscaler Private Access (ZPA)",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "zscaler-private-access",
+                "operation": "get_specific_application_segment_details",
+                "operationTitle": "Get Specific Application Segment Details",
+                "step_variables": {}
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d7c9a10d-c1fa-463a-bb3d-38bedd77e4a9",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Specific Application Segment Details",
+              "sourceStep": "/api/3/workflow_steps/69ee54fa-ee71-4ec6-8ea1-d00c7927d3d9",
+              "targetStep": "/api/3/workflow_steps/7c5598af-2a35-44e7-9e0e-fa52d43faeb1"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "93d88bfb-5049-48a0-a395-2896a1c8a6bf",
+          "collection": "/api/3/workflow_collections/3fe3b8dd-8fd8-4b7b-b993-4c1b487d56ea",
+          "triggerLimit": null,
+          "description": "Retrieves a list of all available customer certificates based on the provided Customer ID.",
+          "name": "Get Customer Certificates",
+          "tag": "#Zscaler Private Access (ZPA)",
+          "recordTags": [
+            "Zscaler",
+            "zscaler-private-access"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/8adb4578-80c3-46df-a079-e6174b907129",
+          "steps": [
+            {
+              "uuid": "8adb4578-80c3-46df-a079-e6174b907129",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "aad965d8-46c2-4fbd-bcf3-8973fae1de0b",
+                "title": "Zscaler Private Access (ZPA): Get Customer Certificates",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "53900bf4-d383-433c-a6ea-c201051e834e",
+              "@type": "WorkflowStep",
+              "name": "Get Customer Certificates",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Zscaler Private Access (ZPA)",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "zscaler-private-access",
+                "operation": "get_customer_certificates",
+                "operationTitle": "Get Customer Certificates",
+                "step_variables": {}
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "ac6a7173-a36d-490c-a0ca-7e65d7e9f9c2",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Customer Certificates",
+              "sourceStep": "/api/3/workflow_steps/8adb4578-80c3-46df-a079-e6174b907129",
+              "targetStep": "/api/3/workflow_steps/53900bf4-d383-433c-a6ea-c201051e834e"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "2d0d42cc-53cd-4dc2-af83-29e267ead134",
+          "collection": "/api/3/workflow_collections/3fe3b8dd-8fd8-4b7b-b993-4c1b487d56ea",
+          "triggerLimit": null,
+          "description": "Retrieve all issued certificates.",
+          "name": "Get All Issued Certificates",
+          "tag": "#Zscaler Private Access (ZPA)",
+          "recordTags": [
+            "Zscaler",
+            "zscaler-private-access"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/5e035868-e6d1-4098-86b0-4cce42256429",
+          "steps": [
+            {
+              "uuid": "5e035868-e6d1-4098-86b0-4cce42256429",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "64231c41-fccd-411b-a177-032223d42772",
+                "title": "Zscaler Private Access (ZPA): Get All Issued Certificates",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "e30f501d-83a9-4a3d-a67c-94bd6abcda17",
+              "@type": "WorkflowStep",
+              "name": "Get All Issued Certificates",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Zscaler Private Access (ZPA)",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "zscaler-private-access",
+                "operation": "get_all_issued_certificates",
+                "operationTitle": "Get All Issued Certificates",
+                "step_variables": {}
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "cc50569b-9a3f-42f0-8c9b-1f45472a0ca0",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get All Issued Certificates",
+              "sourceStep": "/api/3/workflow_steps/5e035868-e6d1-4098-86b0-4cce42256429",
+              "targetStep": "/api/3/workflow_steps/e30f501d-83a9-4a3d-a67c-94bd6abcda17"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "609a0bb1-4565-46ca-a462-c8962cc3635e",
+          "collection": "/api/3/workflow_collections/3fe3b8dd-8fd8-4b7b-b993-4c1b487d56ea",
+          "triggerLimit": null,
+          "description": "Retrieves details of a specific certificate based on its ID.",
+          "name": "Get Certificate Details",
+          "tag": "#Zscaler Private Access (ZPA)",
+          "recordTags": [
+            "Zscaler",
+            "zscaler-private-access"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/58f1b50b-d4c6-4a3f-a802-58b2c411580e",
+          "steps": [
+            {
+              "uuid": "58f1b50b-d4c6-4a3f-a802-58b2c411580e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "66da97ba-0161-4833-87d0-b4f4c6800a7a",
+                "title": "Zscaler Private Access (ZPA): Get Certificate Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "0d4ccfff-1798-4702-980c-18f7969afce4",
+              "@type": "WorkflowStep",
+              "name": "Get Certificate Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Zscaler Private Access (ZPA)",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "zscaler-private-access",
+                "operation": "get_certificate_details",
+                "operationTitle": "Get Certificate Details",
+                "step_variables": {}
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "fa009fbf-5a98-403c-be0d-6e4dfd1be016",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Certificate Details",
+              "sourceStep": "/api/3/workflow_steps/58f1b50b-d4c6-4a3f-a802-58b2c411580e",
+              "targetStep": "/api/3/workflow_steps/0d4ccfff-1798-4702-980c-18f7969afce4"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "86af4976-c720-4305-ac9b-f235b6a50ac9",
+          "collection": "/api/3/workflow_collections/3fe3b8dd-8fd8-4b7b-b993-4c1b487d56ea",
+          "triggerLimit": null,
+          "description": "Execute any Zscaler Private Access (ZPA) API endpoint using the specified API method, endpoint, and payload as input parameters.",
+          "name": "Execute an API Request",
+          "tag": "#Zscaler Private Access (ZPA)",
+          "recordTags": [
+            "Zscaler",
+            "zscaler-private-access"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/758ad088-4fe7-4185-84aa-962f4f262e6e",
+          "steps": [
+            {
+              "uuid": "758ad088-4fe7-4185-84aa-962f4f262e6e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "36775057-fce1-490e-8770-a5ba3b9d8ecf",
+                "title": "Zscaler Private Access (ZPA): Execute an API Request",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "87dbf254-a03b-4e7f-8e08-263dd1010207",
+              "@type": "WorkflowStep",
+              "name": "Execute an API Request",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Zscaler Private Access (ZPA)",
+                "config": "''",
+                "params": {
+                  "method": "GET"
+                },
+                "version": "1.0.0",
+                "connector": "zscaler-private-access",
+                "operation": "execute_api_request",
+                "operationTitle": "Execute an API Request",
+                "step_variables": {}
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "7dcca15b-a4e4-43eb-8da1-4ea01b2cc35e",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Execute an API Request",
+              "sourceStep": "/api/3/workflow_steps/758ad088-4fe7-4185-84aa-962f4f262e6e",
+              "targetStep": "/api/3/workflow_steps/87dbf254-a03b-4e7f-8e08-263dd1010207"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
